@@ -63,9 +63,6 @@ The primary objective is to evaluate the effectiveness of cross-selling multiple
 | `dwh_booking` | `fact_crosssell_transaction` | Cross-sell transactions between different services. |
 | `dwh_booking` | `fact_holiday_sales` | Holiday-specific sales performance for each service. |
 | `dwh_customer` | `fact_multiservice_user` | Multi-service usage metrics by customer. |
-| `dwh_engagement` | `fact_customer_journey` | Customer interactions and engagement across touchpoints. |
-| `dwh_marketing` | `fact_campaign_performance` | Campaign performance metrics across various channels. |
-| `dwh_feedback` | `fact_product_rating_and_feedback` | Ratings and feedback data for products and services. |
 
 ### Dimension Tables
 
