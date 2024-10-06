@@ -81,6 +81,11 @@ The primary objective is to evaluate the effectiveness of cross-selling multiple
 | `dwh_products` | `dim_bundle_offer` | Bundle offer details, mapping primary and secondary services. |
 
 ### **Datamart Tables**
+| **Schema Name** | **Datamart Table Name** | **Description** |
+| --- | --- | --- |
+| `datamart_booking` | `seasonal_cross_sell_performance` | Analysis of cross-sell transactions during holidays. |
+| `datamart_marketing` | `holiday_service_bundle_analysis` | Analysis of holiday-specific service bundles. |
+| `datamart_customer` | `multi_service_customer_behavior` | Customer behavior patterns for multi-service users. |
 
 ## Data Warehouse Design
 1. **Seasonal Holiday Sales Trends**:
