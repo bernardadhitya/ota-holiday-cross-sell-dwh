@@ -1,10 +1,3 @@
-{{
-    config(
-        tags=['ota_daily'],
-        materialization='table',
-    ) 
-}}
-
 SELECT
     rpc.product_id,
     rpc.product_name,

@@ -1,10 +1,3 @@
-{{
-    config(
-        tags=['ota_daily'],
-        materialization='table',
-    ) 
-}}
-
 SELECT
     stm.service_type_id,
     stm.service_type_name

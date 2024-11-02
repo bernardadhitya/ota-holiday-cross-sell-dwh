@@ -1,10 +1,3 @@
-{{
-    config(
-        tags=['ota_daily'],
-        materialization='table',
-    ) 
-}}
-
 SELECT
     cp.campaign_id,
     cp.campaign_name,

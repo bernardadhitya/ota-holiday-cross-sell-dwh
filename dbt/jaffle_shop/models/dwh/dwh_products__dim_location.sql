@@ -1,10 +1,3 @@
-{{
-    config(
-        tags=['ota_daily'],
-        materialization='table',
-    ) 
-}}
-
 SELECT
     lm.location_id,
     lm.city,

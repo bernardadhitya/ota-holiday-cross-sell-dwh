@@ -30,5 +30,4 @@ simple_dag = DbtDag(
     start_date=datetime(2023, 1, 1),
     catchup=False,
     dag_id="dag_ota_daily",
-    tags=["ota_daily"],
 )

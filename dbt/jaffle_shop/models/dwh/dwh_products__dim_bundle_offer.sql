@@ -1,10 +1,3 @@
-{{
-    config(
-        tags=['ota_daily'],
-        materialization='table',
-    ) 
-}}
-
 SELECT DISTINCT
     rbb.bundle_booking_id AS bundle_offer_id,
     CONCAT('Bundle Offer ', rbb.bundle_booking_id) AS bundle_offer_name,

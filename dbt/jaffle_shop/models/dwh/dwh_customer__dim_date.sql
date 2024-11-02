@@ -1,10 +1,3 @@
-{{
-    config(
-        tags=['ota_daily'],
-        materialization='table',
-    ) 
-}}
-
 WITH date_range AS (
   SELECT DATE(generate_series) AS date FROM generate_series(
     '2024-01-01 00:00:00'::timestamp,

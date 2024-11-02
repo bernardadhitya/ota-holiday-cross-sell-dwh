@@ -1,10 +1,3 @@
-{{
-    config(
-        tags=['ota_daily'],
-        materialization='table',
-    ) 
-}}
-
 WITH all_booking_transaction AS (
     -- Union of all booking transactions
     SELECT
