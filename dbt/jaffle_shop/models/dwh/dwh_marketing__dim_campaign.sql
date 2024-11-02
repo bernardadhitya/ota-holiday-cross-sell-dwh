@@ -1,6 +1,7 @@
 {{
     config(
-        tags=['ota_daily']
+        tags=['ota_daily'],
+        materialization='table',
     ) 
 }}
 
@@ -11,5 +12,5 @@ SELECT
     cp.start_date,
     cp.end_date
 FROM
-    {{ ref('raw_marketing__raw_campaign_performance') }} cp
-LEFT JOIN {{ ref('raw_marketing__raw_seasonal_event_mapping') }} sem ON cp.campaign_name = sem.event_name
+    {{ source('raw.ota_data_prod', 'raw_marketing__raw_campaign_performance') }} cp
+LEFT JOIN {{ source('raw.ota_data_prod', 'raw_marketing__raw_seasonal_event_mapping') }} sem ON cp.campaign_name = sem.event_name

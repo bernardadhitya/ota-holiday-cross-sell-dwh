@@ -1,6 +1,7 @@
 {{
     config(
-        tags=['ota_daily']
+        tags=['ota_daily'],
+        materialization='table',
     ) 
 }}
 
@@ -12,5 +13,5 @@ SELECT
     ls.membership_tier,
     cp.preferred_location
 FROM
-    {{ ref('raw_customer__raw_customer_profile') }} cp
-LEFT JOIN {{ ref('raw_customer__raw_customer_loyalty_status') }} ls ON cp.customer_id = ls.customer_id
+    {{ source('raw.ota_data_prod', 'raw_customer__raw_customer_profile') }} cp
+LEFT JOIN {{ source('raw.ota_data_prod', 'raw_customer__raw_customer_loyalty_status') }} ls ON cp.customer_id = ls.customer_id

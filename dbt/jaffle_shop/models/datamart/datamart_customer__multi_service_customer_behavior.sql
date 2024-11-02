@@ -1,6 +1,7 @@
 {{
     config(
-        tags=['ota_daily']
+        tags=['ota_daily'],
+        materialization='table',
     ) 
 }}
 

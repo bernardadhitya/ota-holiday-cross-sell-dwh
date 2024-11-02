@@ -1,6 +1,7 @@
 {{
     config(
-        tags=['ota_daily']
+        tags=['ota_daily'],
+        materialization='table',
     ) 
 }}
 
@@ -10,4 +11,4 @@ SELECT
     lm.country,
     lm.region
 FROM
-    {{ ref('raw_products__raw_location_mapping') }} lm
+    {{ source('raw.ota_data_prod', 'raw_products__raw_location_mapping') }} lm

@@ -1,6 +1,7 @@
 {{
     config(
-        tags=['ota_daily']
+        tags=['ota_daily'],
+        materialization='table',
     ) 
 }}
 
@@ -10,4 +11,4 @@ SELECT
     rpc.service_type_id,
     rpc.product_category
 FROM
-    {{ ref('raw_products__raw_product_catalog') }} rpc
+    {{ source('raw.ota_data_prod', 'raw_products__raw_product_catalog') }} rpc

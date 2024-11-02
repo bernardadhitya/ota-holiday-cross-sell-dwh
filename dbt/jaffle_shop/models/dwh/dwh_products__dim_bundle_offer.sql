@@ -1,6 +1,7 @@
 {{
     config(
-        tags=['ota_daily']
+        tags=['ota_daily'],
+        materialization='table',
     ) 
 }}
 
@@ -11,6 +12,6 @@ SELECT DISTINCT
     ppc2.service_type_id AS secondary_service_type_id,
     rbb.discount_applied AS discount_amount
 FROM
-    {{ ref('raw_booking__raw_bundle_booking') }} rbb
-JOIN {{ ref('raw_products__raw_product_catalog') }} ppc1 ON rbb.primary_product_id = ppc1.product_id
-JOIN {{ ref('raw_products__raw_product_catalog') }} ppc2 ON rbb.secondary_product_id = ppc2.product_id
+    {{ source('raw.ota_data_prod', 'raw_booking__raw_bundle_booking') }} rbb
+JOIN {{ source('raw.ota_data_prod', 'raw_products__raw_product_catalog') }} ppc1 ON rbb.primary_product_id = ppc1.product_id
+JOIN {{ source('raw.ota_data_prod', 'raw_products__raw_product_catalog') }} ppc2 ON rbb.secondary_product_id = ppc2.product_id

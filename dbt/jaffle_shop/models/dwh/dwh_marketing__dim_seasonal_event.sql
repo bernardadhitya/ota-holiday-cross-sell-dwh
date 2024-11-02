@@ -1,6 +1,7 @@
 {{
     config(
-        tags=['ota_daily']
+        tags=['ota_daily'],
+        materialization='table',
     ) 
 }}
 
@@ -11,4 +12,4 @@ SELECT
     sem.start_date,
     sem.end_date
 FROM
-    {{ ref('raw_marketing__raw_seasonal_event_mapping') }} sem
+    {{ source('raw.ota_data_prod', 'raw_marketing__raw_seasonal_event_mapping') }} sem

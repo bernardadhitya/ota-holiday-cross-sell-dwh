@@ -1,6 +1,7 @@
 {{
     config(
-        tags=['ota_daily']
+        tags=['ota_daily'],
+        materialization='table',
     ) 
 }}
 
@@ -37,5 +38,5 @@ LEFT JOIN (
         generate_series(sem.start_date, sem.end_date, INTERVAL '1 day') AS event_date,
         sem.event_name
     FROM
-        {{ ref('raw_marketing__raw_seasonal_event_mapping') }} sem
+        {{ source('raw.ota_data_prod', 'raw_marketing__raw_seasonal_event_mapping') }} sem
 ) sem ON dr.date = sem.event_date

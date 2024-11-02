@@ -1,0 +1,20 @@
+version: 2
+
+sources:
+  - name: raw.ota_data_prod
+    schema: ota_data_prod
+    tables:
+      - name: raw_booking__raw_attraction_booking
+      - name: raw_booking__raw_bundle_booking
+      - name: raw_booking__raw_car_rental_booking
+      - name: raw_booking__raw_flight_booking
+      - name: raw_booking__raw_hotel_booking
+      - name: raw_customer__raw_customer_loyalty_status
+      - name: raw_customer__raw_customer_profile
+      - name: raw_finserv__raw_discount_applications
+      - name: raw_marketing__raw_campaign_performance
+      - name: raw_marketing__raw_campaign_sales
+      - name: raw_marketing__raw_seasonal_event_mapping
+      - name: raw_products__raw_location_mapping
+      - name: raw_products__raw_product_catalog
+      - name: raw_products__raw_service_type_mapping

@@ -1,6 +1,7 @@
 {{
     config(
-        tags=['ota_daily']
+        tags=['ota_daily'],
+        materialization='table',
     ) 
 }}
 
@@ -9,7 +10,7 @@ WITH product_location AS (
         pc.product_id,
         MIN(dl.location_id) AS location_id
     FROM
-        {{ ref('raw_products__raw_product_catalog') }} pc
+        {{ source('raw.ota_data_prod', 'raw_products__raw_product_catalog') }} pc
     JOIN {{ ref('dwh_products__dim_location') }} dl
         ON pc.product_name LIKE CONCAT('%', dl.city, '%')
     GROUP BY pc.product_id
@@ -27,8 +28,8 @@ SELECT
     rbb.bundle_price AS transaction_amount,
     rbb.discount_applied AS bundle_discount_amount
 FROM
-    {{ ref('raw_booking__raw_bundle_booking') }} rbb
-JOIN {{ ref('raw_products__raw_product_catalog') }} ppc1 ON rbb.primary_product_id = ppc1.product_id
-JOIN {{ ref('raw_products__raw_product_catalog') }} ppc2 ON rbb.secondary_product_id = ppc2.product_id
+    {{ source('raw.ota_data_prod', 'raw_booking__raw_bundle_booking') }} rbb
+JOIN {{ source('raw.ota_data_prod', 'raw_products__raw_product_catalog') }} ppc1 ON rbb.primary_product_id = ppc1.product_id
+JOIN {{ source('raw.ota_data_prod', 'raw_products__raw_product_catalog') }} ppc2 ON rbb.secondary_product_id = ppc2.product_id
 LEFT JOIN product_location pl1 ON ppc1.product_id = pl1.product_id
 LEFT JOIN {{ ref('dwh_products__dim_bundle_offer') }} dbo ON rbb.bundle_booking_id = dbo.bundle_offer_id
