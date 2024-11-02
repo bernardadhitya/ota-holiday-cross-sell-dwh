@@ -19,12 +19,12 @@ SELECT
     dc.membership_level AS preferred_membership_level,
     cls.points_accrued AS loyalty_points_accrued
 FROM
-    ota_data_prod.dwh_customer__fact_multiservice_user fmu
-JOIN ota_data_prod.dwh_customer__dim_customer dc ON fmu.customer_id = dc.customer_id
-LEFT JOIN ota_data_prod.dwh_products__dim_service_type dst1 ON fmu.primary_service_type_id = dst1.service_type_id
-LEFT JOIN ota_data_prod.dwh_products__dim_service_type dst2 ON fmu.secondary_service_type_id = dst2.service_type_id
-LEFT JOIN ota_data_prod.dwh_products__dim_location dl ON dc.preferred_location = dl.location_id
-LEFT JOIN ota_data_prod.dwh_customer__dim_date dd1 ON fmu.first_transaction_date = dd1.date
-LEFT JOIN ota_data_prod.dwh_customer__dim_date dd2 ON fmu.last_transaction_date = dd2.date
-LEFT JOIN ota_data_prod.raw_customer__raw_customer_loyalty_status cls ON fmu.customer_id = cls.customer_id
+    {{ ref('dwh_customer__fact_multiservice_user') }} fmu
+JOIN {{ ref('dwh_customer__dim_customer') }} dc ON fmu.customer_id = dc.customer_id
+LEFT JOIN {{ ref('dwh_products__dim_service_type') }} dst1 ON fmu.primary_service_type_id = dst1.service_type_id
+LEFT JOIN {{ ref('dwh_products__dim_service_type') }} dst2 ON fmu.secondary_service_type_id = dst2.service_type_id
+LEFT JOIN {{ ref('dwh_products__dim_location') }} dl ON dc.preferred_location = dl.location_id
+LEFT JOIN {{ ref('dwh_customer__dim_date') }} dd1 ON fmu.first_transaction_date = dd1.date
+LEFT JOIN {{ ref('dwh_customer__dim_date') }} dd2 ON fmu.last_transaction_date = dd2.date
+LEFT JOIN {{ ref('raw_customer__raw_customer_loyalty_status') }} cls ON fmu.customer_id = cls.customer_id
 ORDER BY fmu.multiservice_user_id
