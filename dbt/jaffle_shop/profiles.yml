@@ -6,7 +6,7 @@ airflow_db:
       host: "{{ env_var('POSTGRES_HOST') }}"
       user: "{{ env_var('POSTGRES_USER') }}"
       password: "{{ env_var('POSTGRES_PASSWORD') }}"
-      port: "{{ env_var('POSTGRES_PORT') }}"
+      port: {{ env_var('POSTGRES_PORT') }}
       dbname: "{{ env_var('POSTGRES_DB') }}"
       schema: ota_data_prod
       threads: 4
