@@ -65,7 +65,7 @@ SELECT
     CASE WHEN pt.booking_type = 'Bundle' THEN TRUE ELSE FALSE END AS is_bundled_flag
 FROM all_booking_transaction as pt
 JOIN {{ ref('raw_products__raw_product_catalog') }} pc ON pt.product_id = pc.product_id
-LEFT JOIN {{ ref('dwh_products__dim_location dl') }} ON pc.product_name LIKE CONCAT('%', dl.city, '%')
+LEFT JOIN {{ ref('dwh_products__dim_location') }} dl ON pc.product_name LIKE CONCAT('%', dl.city, '%')
 LEFT JOIN {{ ref('raw_marketing__raw_campaign_sales') }} cs ON pt.product_id = cs.product_id AND pt.transaction_date = cs.transaction_date
 LEFT JOIN {{ ref('raw_marketing__raw_seasonal_event_mapping') }} sem ON cs.campaign_id = sem.event_id
 LEFT JOIN {{ ref('raw_finserv__raw_discount_applications') }} da ON da.payment_id = pt.product_id
