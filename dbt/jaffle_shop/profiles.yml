@@ -3,10 +3,10 @@ airflow_db:
   outputs:
     dev:
       type: postgres
-      host: aws-0-ap-southeast-1.pooler.supabase.com
-      user: postgres.ryghjqerglvkqxrjpcyp
-      password: "{{ env_var('SUPABASE_PASSWORD') }}"
-      port: 6543
-      dbname: postgres
+      host: "{{ env_var('POSTGRES_HOST') }}"
+      user: "{{ env_var('POSTGRES_USER') }}"
+      password: "{{ env_var('POSTGRES_PASSWORD') }}"
+      port: "{{ env_var('POSTGRES_PORT') }}"
+      dbname: "{{ env_var('POSTGRES_DB') }}"
       schema: ota_data_prod
       threads: 4

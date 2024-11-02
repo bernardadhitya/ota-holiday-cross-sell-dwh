@@ -5,6 +5,16 @@ from cosmos import DbtDag, ProjectConfig, ProfileConfig
 from include.profiles import airflow_db
 from include.constants import jaffle_shop_path, venv_execution_config
 
+from airflow.models import Connection
+import os
+
+conn = Connection.get_connection_from_secrets('supabase_conn')
+os.environ['POSTGRES_HOST'] = conn.host
+os.environ['POSTGRES_USER'] = conn.login
+os.environ['POSTGRES_PASSWORD'] = conn.password
+os.environ['POSTGRES_PORT'] = str(conn.port)
+os.environ['POSTGRES_DB'] = conn.schema
+
 simple_dag = DbtDag(
     # dbt/cosmos-specific parameters
     project_config=ProjectConfig(jaffle_shop_path),
