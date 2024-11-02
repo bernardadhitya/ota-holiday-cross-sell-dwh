@@ -1,1 +1,12 @@
 astronomer-cosmos>=1.0.2
+apache-airflow
+dbt-core
+dbt-postgres
+dbt-clickhouse
+astronomer-cosmos[dbt-all]
+astronomer-cosmos[dbt-postgres]
+astronomer-cosmos[docker]
+astronomer-cosmos[kubernetes]
+astronomer-cosmos[dbt-clickhouse]
+apache-airflow-providers-airbyte
+apache-airflow-providers-postgres
