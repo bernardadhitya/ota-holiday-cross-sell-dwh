@@ -27,5 +27,5 @@ LEFT JOIN {{ ref('dwh_products__dim_service_type') }} dst2 ON fmu.secondary_serv
 LEFT JOIN {{ ref('dwh_products__dim_location') }} dl ON dc.preferred_location = dl.location_id
 LEFT JOIN {{ ref('dwh_customer__dim_date') }} dd1 ON fmu.first_transaction_date = dd1.date
 LEFT JOIN {{ ref('dwh_customer__dim_date') }} dd2 ON fmu.last_transaction_date = dd2.date
-LEFT JOIN {{ ref('raw_customer__raw_customer_loyalty_status') }} cls ON fmu.customer_id = cls.customer_id
+LEFT JOIN {{ source('raw.ota_data_prod', 'raw_customer__raw_customer_loyalty_status') }} cls ON fmu.customer_id = cls.customer_id
 ORDER BY fmu.multiservice_user_id
