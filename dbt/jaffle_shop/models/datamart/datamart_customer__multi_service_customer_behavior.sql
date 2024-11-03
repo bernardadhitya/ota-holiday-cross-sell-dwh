@@ -17,7 +17,7 @@ SELECT
     dst2.service_type_name AS secondary_service_type_name,
     dl.city AS preferred_location_city,
     dl.country AS preferred_location_country,
-    dc.membership_level AS preferred_membership_level,
+    dc.membership_tier AS preferred_membership_level,
     cls.points_accrued AS loyalty_points_accrued
 FROM
     {{ ref('dwh_customer__fact_multiservice_user') }} fmu
